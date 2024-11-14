@@ -1,0 +1,20 @@
+R001,123 Main St,2000.000000,Available,3,true,true
+R002,456 Elm St,1800.000000,Under Maintenance,2,false,true
+R003,789 Maple St,2500.000000,Rented,4,true,false
+R004,101 Oak St,2200.000000,Available,3,true,true
+R005,202 Oak St,1900.000000,Under Maintenance,2,false,true
+R006,303 Oak St,2600.000000,Rented,4,true,false
+R007,404 Oak St,2300.000000,Available,3,true,true
+R008,505 Oak St,2000.000000,Under Maintenance,2,false,true
+R009,606 Oak St,2700.000000,Rented,4,true,false
+R010,707 Oak St,2400.000000,Available,3,true,true
+R011,808 Oak St,2100.000000,Under Maintenance,2,false,true
+R012,909 Oak St,2800.000000,Rented,4,true,false
+R013,1010 Oak St,2500.000000,Available,3,true,true
+R014,1111 Oak St,2200.000000,Under Maintenance,2,false,true
+R015,1212 Oak St,2900.000000,Rented,4,true,false
+R016,1313 Oak St,2600.000000,Available,3,true,true
+R017,1414 Oak St,2300.000000,Under Maintenance,2,false,true
+R018,1515 Oak St,3000.000000,Rented,4,true,false
+R019,1616 Oak St,2700.000000,Available,3,true,true
+R020,1717 Oak St,2400.000000,Under Maintenance,2,false,true
