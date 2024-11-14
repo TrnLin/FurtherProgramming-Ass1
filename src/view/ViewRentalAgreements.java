@@ -16,6 +16,10 @@ public class ViewRentalAgreements {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void viewAllRentalAgreements(RentalManagerImpl rentalManager) {
+        if (rentalManager == null) {
+            throw new IllegalArgumentException("RentalManagerImpl cannot be null");
+        }
+
         System.out.println();
         System.out.println("Rental Agreements");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");

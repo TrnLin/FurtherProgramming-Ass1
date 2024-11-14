@@ -21,6 +21,10 @@ public class Host extends Person {
         super(trim);
     }
 
+    public Host(String id, String name, String date, String email) {
+        super();
+    }
+
     // Getters and Setters
     public List<Property> getManagedProperties() {
         return managedProperties;

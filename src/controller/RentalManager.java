@@ -19,4 +19,5 @@ public interface RentalManager {
     List<Payment> getAllPayments();
     List<Property> getAllProperties();
 
+
 }

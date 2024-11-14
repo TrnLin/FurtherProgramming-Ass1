@@ -21,6 +21,10 @@ public class Owner extends Person {
         super(trim);
     }
 
+    public Owner(String id, String name, String date, String email) {
+        super();
+    }
+
     // Getters and Setters
     public List<Property> getOwnedProperties() {
         return ownedProperties;

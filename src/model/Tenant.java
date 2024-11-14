@@ -18,6 +18,10 @@ public class Tenant extends Person {
         super(trim);
     }
 
+    public Tenant(String id, String name, String date, String email) {
+        super();
+    }
+
     // Getters and Setters    
     public List<RentalAgreement> getRentalAgreements() {
         return rentalAgreements;

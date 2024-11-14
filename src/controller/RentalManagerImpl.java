@@ -4,10 +4,10 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import model.*;
-
 
 
 public class RentalManagerImpl implements RentalManager {
@@ -32,6 +32,8 @@ public class RentalManagerImpl implements RentalManager {
     private static final String RENTAL_AGREEMENTS_FILE = DATA_FOLDER + "rental_agreements.csv";
     private static final String PAYMENTS_FILE = DATA_FOLDER + "payments.csv";
     private static final String PROPERTIES_FILE = DATA_FOLDER + "properties.csv";
+
+    private static final Logger LOGGER = Logger.getLogger(RentalManagerImpl.class.getName());
 
     @Override
     public void addRentalAgreement(RentalAgreement agreement) {
@@ -239,6 +241,8 @@ public class RentalManagerImpl implements RentalManager {
         }
     }
 
+
+    //done
     private void loadRentalAgreementsFromFile(String filepath) throws IOException, ParseException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
             String line;
@@ -386,6 +390,7 @@ public class RentalManagerImpl implements RentalManager {
         writer.close();
     }
 
+    //done
     private void saveRentalAgreementsToFile(String filepath) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(filepath));
         for (RentalAgreement agreement : rentalAgreements) {
@@ -416,4 +421,62 @@ public class RentalManagerImpl implements RentalManager {
                 .filter(p -> p.getAddress().equals(address))
                 .findFirst().orElse(null);
     }
+
+    public void addProperty(Property newProperty) {
+        properties.add(newProperty);
+    }
+
+    public void addTenant(Tenant newTenant) {
+        tenants.add(newTenant);
+    }
+
+    public void addHost(Host newHost) {
+        hosts.add(newHost);
+    }
+
+    public void addOwner(Owner newOwner) {
+        owners.add(newOwner);
+    }
+
+    public void addResidentialProperty(ResidentialProperty newProperty) {
+        residentialProperties.add(newProperty);
+    }
+
+    public void addCommercialProperty(CommercialProperty newProperty) {
+        commercialProperties.add(newProperty);
+    }
+
+    public void addPayment(Payment newPayment) {
+        payments.add(newPayment);
+    }
+
+    public void deleteTenant(Tenant tenant) {
+        tenants.remove(tenant);
+    }
+
+    public void deleteHost(Host host) {
+        hosts.remove(host);
+    }
+
+    public void deleteOwner(Owner owner) {
+        owners.remove(owner);
+    }
+
+    public void deleteResidentialProperty(ResidentialProperty property) {
+        residentialProperties.remove(property);
+    }
+
+    public void deleteCommercialProperty(CommercialProperty property) {
+        commercialProperties.remove(property);
+    }
+
+    public void deletePayment(Payment payment) {
+        payments.remove(payment);
+    }
+
+    public void deleteProperty(Property property) {
+        properties.remove(property);
+    }
+
+
 }

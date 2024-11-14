@@ -1,11 +1,12 @@
 package controller;
 
-import controller.RentalManagerImpl;
 import model.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
-import controller.Prompt.*;
+import java.util.stream.Collectors;
 
 import static controller.Prompt.*;
 
@@ -16,6 +17,16 @@ public class ModifyRentalAgreements {
     public static void addRentalAgreement(RentalManagerImpl rentalManager) {
         System.out.print("Enter agreement ID: ");
         String agreementId = scanner.nextLine();
+
+        // Check if the rental agreement already exists
+        boolean agreementExists = rentalManager.getAllRentalAgreements()
+                .stream()
+                .anyMatch(ra -> ra.getAgreementId().equals(agreementId));
+
+        if (agreementExists) {
+            System.out.println("Rental agreement already exists. Cannot add a new agreement with the same ID.");
+            return;
+        }
 
         List<Tenant> tenants = promptForTenants(rentalManager);
         List<Host> hosts = promptForHosts(rentalManager);
@@ -37,6 +48,7 @@ public class ModifyRentalAgreements {
                     period, rentingFee, status
             );
             rentalManager.addRentalAgreement(agreement);
+            updateCsv("data/rental_agreements.csv", agreement);
             System.out.println("Rental agreement added successfully.");
         } catch (ParseException e) {
             System.err.println("Invalid date format. Please enter the date in yyyy-MM-dd format.");
@@ -78,6 +90,7 @@ public class ModifyRentalAgreements {
                     period, rentingFee, status
             );
             rentalManager.updateRentalAgreement(agreementId, updatedAgreement);
+            updateCsv("data/rental_agreements.csv", updatedAgreement);
             System.out.println("Rental agreement updated successfully.");
         } catch (ParseException e) {
             System.err.println("Invalid date format. Please enter the date in yyyy-MM-dd format.");
@@ -89,5 +102,23 @@ public class ModifyRentalAgreements {
         String agreementId = scanner.nextLine();
         rentalManager.deleteRentalAgreement(agreementId);
         System.out.println("Rental agreement deleted successfully.");
+    }
+
+    private static void updateCsv(String fileName, RentalAgreement agreement) {
+        try (FileWriter writer = new FileWriter(fileName, true)) {
+            writer.append(String.join(",",
+                    agreement.getAgreementId(),
+                    agreement.getTenants().stream().map(Tenant::getFullName).collect(Collectors.joining(";")),
+                    agreement.getHosts().stream().map(Host::getFullName).collect(Collectors.joining(";")),
+                    agreement.getOwner().getFullName(),
+                    agreement.getProperty().getAddress(),
+                    dateFormat.format(agreement.getContractDate()),
+                    agreement.getPeriod(),
+                    String.valueOf(agreement.getRentingFee()),
+                    agreement.getStatus()
+            )).append("\n");
+        } catch (IOException e) {
+            System.err.println("Error updating " + fileName + ": " + e.getMessage());
+        }
     }
 }
