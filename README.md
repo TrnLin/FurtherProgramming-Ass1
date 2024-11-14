@@ -16,12 +16,23 @@ git clone https://github.com/TrnLin/FurtherProgramming-Ass1.git
 cd FurtherProgramming-Ass1
 ./mvnw install
 ```
-##Features
+## Sample data is as follow
+
+### Person
+
+| Id | Full Name | DoB | Contact Information |
+|----|-----------|-----|---------------------|
+| 1  | Michael Brown | 07/23/1965 |  michael@example.com |
+
+
+
+
+## Features
 - Manage rental agreements
 - Add, update, delete tenants, hosts, and owners
 - Handle residential and commercial properties
 
-##Contributing
+## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
 License
