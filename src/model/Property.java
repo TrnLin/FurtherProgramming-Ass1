@@ -16,7 +16,7 @@ public class Property {
 
     // Constructor with default values
     public Property(String propertyId) {
-        this.propertyId = propertyId;
+        this.propertyId = null;
         this.address = propertyId;
         this.pricing = 0.0;
         this.status = "";
