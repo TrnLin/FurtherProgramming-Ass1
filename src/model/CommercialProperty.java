@@ -1,3 +1,7 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
+
 package model;
 
 public class CommercialProperty extends Property {

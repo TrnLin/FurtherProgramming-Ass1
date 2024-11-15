@@ -1,3 +1,7 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
+
 package model;
 import java.util.ArrayList;
 import java.util.Date;

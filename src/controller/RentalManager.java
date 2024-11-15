@@ -1,3 +1,6 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
 package controller;
 
 import model.*;
@@ -18,6 +21,5 @@ public interface RentalManager {
     List<CommercialProperty> getAllCommercialProperties();
     List<Payment> getAllPayments();
     List<Property> getAllProperties();
-
 
 }

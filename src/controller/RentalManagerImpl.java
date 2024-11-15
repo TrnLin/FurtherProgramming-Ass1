@@ -1,3 +1,7 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
+
 package controller;
 
 import java.io.*;
@@ -6,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 import model.*;
 
 
@@ -23,6 +27,7 @@ public class RentalManagerImpl implements RentalManager {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
+    // File paths
     private static final String DATA_FOLDER = "data/";
     private static final String TENANTS_FILE = DATA_FOLDER + "tenants.csv";
     private static final String HOSTS_FILE = DATA_FOLDER + "hosts.csv";
@@ -35,13 +40,14 @@ public class RentalManagerImpl implements RentalManager {
 
     private static final Logger LOGGER = Logger.getLogger(RentalManagerImpl.class.getName());
 
+
     @Override
     public void addRentalAgreement(RentalAgreement agreement) {
         rentalAgreements.add(agreement);
     }
 
+    //Update rental agreement
     @Override
-
     public void updateRentalAgreement(String agreementId, RentalAgreement updatedAgreement) {
         try {
             Optional<RentalAgreement> existingAgreement = rentalAgreements.stream()
@@ -59,6 +65,7 @@ public class RentalManagerImpl implements RentalManager {
         }
     }
 
+    //Delete rental agreement
     @Override
     public void deleteRentalAgreement(String agreementId) {
         rentalAgreements.removeIf(agreement -> agreement.getAgreementId().equals(agreementId));
@@ -149,6 +156,8 @@ public class RentalManagerImpl implements RentalManager {
         return properties.stream().sorted(comparator).collect(Collectors.toList());
     }
 
+
+    // Load sample data
     public void loadSampleData() {
         try {
             loadTenantsFromFile(TENANTS_FILE);
@@ -164,6 +173,7 @@ public class RentalManagerImpl implements RentalManager {
         }
     }
 
+    // Save data
     public void saveData() {
         try {
             saveTenantsToFile(TENANTS_FILE);
@@ -415,20 +425,6 @@ public class RentalManagerImpl implements RentalManager {
 
     private Tenant findTenantByName(String fullName) {
         return tenants.stream().filter(t -> t.getFullName().equals(fullName)).findFirst().orElse(null);
-    }
-
-    private Host findHostByName(String fullName) {
-        return hosts.stream().filter(h -> h.getFullName().equals(fullName)).findFirst().orElse(null);
-    }
-
-    private Owner findOwnerByName(String fullName) {
-        return owners.stream().filter(o -> o.getFullName().equals(fullName)).findFirst().orElse(null);
-    }
-
-    private Property findPropertyByAddress(String address) {
-        return Stream.concat(residentialProperties.stream(), commercialProperties.stream())
-                .filter(p -> p.getAddress().equals(address))
-                .findFirst().orElse(null);
     }
 
     public void addProperty(Property newProperty) {

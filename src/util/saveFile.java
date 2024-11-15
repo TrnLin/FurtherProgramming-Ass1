@@ -1,3 +1,7 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
+
 package util;
 
 import model.*;
@@ -10,8 +14,8 @@ import java.util.List;
 
 public class saveFile {
     static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
+    // Update CSV file with new entity
     public static void updateCsv(String fileName, Object entity) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             if (entity instanceof Tenant) {

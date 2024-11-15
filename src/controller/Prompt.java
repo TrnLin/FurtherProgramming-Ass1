@@ -1,3 +1,7 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
+
 package controller;
 
 import model.Host;
@@ -25,12 +29,15 @@ public class Prompt {
     static List<Property> properties = new ArrayList<>();
 
 
+    // This method prompts the user to enter tenant names and returns a list of tenants
     public static List<Tenant> promptForTenants(RentalManagerImpl rentalManager) {
         System.out.println("Enter tenant names (comma-separated): ");
         String[] tenantNames = scanner.nextLine().split(",");
         return Stream.of(tenantNames)
                 .map(name -> {
                     String trimmedName = name.trim();
+
+                    // Check if the tenant already exists
                     Tenant existingTenant = rentalManager.getAllTenants().stream()
                             .filter(tenant -> tenant.getFullName().equalsIgnoreCase(trimmedName))
                             .findFirst()
@@ -40,6 +47,7 @@ public class Prompt {
                 .collect(Collectors.toList());
     }
 
+    // This method creates a new tenant and adds it to the list of tenants
     private static Tenant createTenant(String name, RentalManagerImpl rentalManager) {
         Tenant existingTenant = rentalManager.getAllTenants().stream()
                 .filter(tenant -> tenant.getFullName().equals(name))
@@ -69,6 +77,7 @@ public class Prompt {
     public static List<Host> promptForHosts(RentalManagerImpl rentalManager) {
         System.out.println("Enter host names (comma-separated): ");
         String[] hostNames = scanner.nextLine().split(",");
+        // Create a list of hosts from the host names
         return Stream.of(hostNames)
                 .map(name -> {
                     String trimmedName = name.trim();
@@ -81,6 +90,7 @@ public class Prompt {
                 .collect(Collectors.toList());
     }
 
+    // This method creates a new host and adds it to the list of hosts
     private static Host createHost(String name, RentalManagerImpl rentalManager) {
         Host existingHost = rentalManager.getAllHosts().stream()
                 .filter(host -> host.getFullName().equals(name))
@@ -160,8 +170,7 @@ public class Prompt {
         return property;
     }
 
-
-
+    // This method parses a date string in the format yyyy-MM-dd
     private static Date parseDate(String dateStr) {
         try {
             return dateFormat.parse(dateStr);

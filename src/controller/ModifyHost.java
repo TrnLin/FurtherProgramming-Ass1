@@ -1,3 +1,6 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
 package controller;
 
 import model.Host;
@@ -22,6 +25,8 @@ public class ModifyHost {
     private static int hostIdCounter = 20; // Assuming IDs of current hosts go up to 20
     private static List<Host> hosts = new ArrayList<>(); // Assuming this list will hold all hosts
 
+    // This method is called from mainUI.java
+    // It displays the options for modifying hosts
     public static void ViewModifyHost() {
         System.out.println("Modifying a host");
         System.out.println();
@@ -33,6 +38,8 @@ public class ModifyHost {
         System.out.print("Choose an option: ");
         int choice = Integer.parseInt(scanner.nextLine());
 
+
+        // This switch statement handles the user's choice
         switch (choice) {
             case 1:
                 addHost();
@@ -68,6 +75,7 @@ public class ModifyHost {
         String dateOfBirthStr = scanner.nextLine();
         Date dateOfBirth = null;
 
+        // This try-catch block is used to parse the date of birth
         try {
             dateOfBirth = dateFormat.parse(dateOfBirthStr);
         } catch (ParseException e) {
@@ -139,11 +147,13 @@ public class ModifyHost {
     }
 
     private static void updateHostDetail(String hostId, String newName, String newContact) {
+        // This try-with-resources block reads the hosts.csv file
         try (BufferedReader br = new BufferedReader(new FileReader("data/hosts.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values[0].equals(hostId)) {
+                    // This block updates the host's name and contact information
                     Host host = new Host(values[0], values[1], dateFormat.parse(values[2]), values[3]);
                     if (newName != null) {
                         host.setFullName(newName);

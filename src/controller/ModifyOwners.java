@@ -1,3 +1,7 @@
+/** 
+* @author Tran Hoang Linh - S03097 
+*/ 
+
 package controller;
 
 import model.Owner;
@@ -79,6 +83,7 @@ public class ModifyOwners {
         System.out.print("Enter owner ID to update: ");
         String ownerId = scanner.nextLine();
 
+        // Find the owner to update
         Owner ownerToUpdate = null;
         for (Owner owner : owners) {
             if (owner.getId().equals(ownerId)) {
