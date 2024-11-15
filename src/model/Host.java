@@ -8,11 +8,10 @@ public class Host extends Person {
     private List<Property> managedProperties;
 
     // Constructor
-    public Host(String id, String fullName, Date dateOfBirth, String contactInformation) {
-        super(id, fullName, dateOfBirth, contactInformation);
+    public Host(String id, String name, Date dateOfBirth, String contactInfo) {
+        super(id, name, dateOfBirth, contactInfo);
         this.managedProperties = new ArrayList<>();
     }
-
     public Host(){
         super();
     }
@@ -21,9 +20,12 @@ public class Host extends Person {
         super(trim);
     }
 
-    public Host(String id, String name, String date, String email) {
+    public Host(String s, String name, String date, String email) {
         super();
     }
+
+
+
 
     // Getters and Setters
     public List<Property> getManagedProperties() {

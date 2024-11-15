@@ -41,12 +41,21 @@ public class RentalManagerImpl implements RentalManager {
     }
 
     @Override
+
     public void updateRentalAgreement(String agreementId, RentalAgreement updatedAgreement) {
-        for (int i = 0; i < rentalAgreements.size(); i++) {
-            if (rentalAgreements.get(i).getAgreementId().equals(agreementId)) {
-                rentalAgreements.set(i, updatedAgreement);
-                break;
+        try {
+            Optional<RentalAgreement> existingAgreement = rentalAgreements.stream()
+                    .filter(agreement -> agreement.getId().equals(agreementId))
+                    .findFirst();
+
+            if (existingAgreement.isPresent()) {
+                rentalAgreements.remove(existingAgreement.get());
+                rentalAgreements.add(updatedAgreement);
+            } else {
+                LOGGER.warning("Rental Agreement with ID " + agreementId + " not found.");
             }
+        } catch (Exception e) {
+            LOGGER.severe("Error updating rental agreement: " + e.getMessage());
         }
     }
 

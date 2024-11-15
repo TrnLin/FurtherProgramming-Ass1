@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static controller.Prompt.*;
+import static util.Prompt.*;
 
 public class ModifyRentalAgreements {
     private static final Scanner scanner = new Scanner(System.in);

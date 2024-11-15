@@ -100,4 +100,8 @@ public class RentalAgreement {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Object getId() {
+        return agreementId;
+    }
 }
