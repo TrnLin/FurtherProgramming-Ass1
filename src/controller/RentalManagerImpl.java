@@ -11,14 +11,14 @@ import model.*;
 
 
 public class RentalManagerImpl implements RentalManager {
-    private List<RentalAgreement> rentalAgreements = new ArrayList<>();
-    private List<Tenant> tenants = new ArrayList<>();
-    private List<Host> hosts = new ArrayList<>();
-    private List<Owner> owners = new ArrayList<>();
-    private List<ResidentialProperty> residentialProperties = new ArrayList<>();
-    private List<CommercialProperty> commercialProperties = new ArrayList<>();
-    private List<Payment> payments = new ArrayList<>();
-    private List<Property> properties = new ArrayList<>();
+    private final List<RentalAgreement> rentalAgreements = new ArrayList<>();
+    private final List<Tenant> tenants = new ArrayList<>();
+    private final List<Host> hosts = new ArrayList<>();
+    private final List<Owner> owners = new ArrayList<>();
+    private final List<ResidentialProperty> residentialProperties = new ArrayList<>();
+    private final List<CommercialProperty> commercialProperties = new ArrayList<>();
+    private final List<Payment> payments = new ArrayList<>();
+    private final List<Property> properties = new ArrayList<>();
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
