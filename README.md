@@ -1,12 +1,19 @@
-# FurtherProgramming-Ass1
+# Assignment 1 - S4043097  - Further Programming
 
 This project is an assignment for the Further Programming course. It involves implementing a rental management system.
 
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
+- [Sample data is as follow](#sample-data-is-as-follow)
+  - [Person, Owner, Host, Tenants](#person-owner-host-tenants)
+  - [Porperty](#porperty)
+  - [Residental Porperty](#residental-porperty)
+  - [Commercial Porperty](#commercial-porperty)
+  - [Payment](#payment)
+  - [Rental Agreement](#rental-agreement)
 - [Features](#features)
+- [UML Diagram](#uml-diagram)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -65,8 +72,11 @@ cd FurtherProgramming-Ass1
 - Handle residential and commercial properties
 
 ## UML Diagram
-
+## UML with Classes Only
 ![UML Diagram (Classes Only)](pic/UMLClassesOnly.png)
+
+## UML Full
+![UML Diagram](pic/test7.png)
 
 ## Contributing
 
