@@ -18,7 +18,7 @@ public class ViewModify {
         System.out.println("1. Modify a tenant");
         System.out.println("2. Modify a host");
         System.out.println("3. Modify an owner");
-        System.out.println("4. Modify a rental agreement");
+        System.out.println("4. Modify a property");
         System.out.println("5. Exit");
         System.out.println();
         System.out.print("Choose an option: ");
